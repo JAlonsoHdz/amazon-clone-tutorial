@@ -13,12 +13,14 @@ function Home() {
         />
         <div className="home_row">
           <Product
+            id={1234}
             title="All-new Echo Dot (4th Gen, 2020 release) | Smart speaker with Alexa | Charcoal"
             price={29.99}
             image="https://m.media-amazon.com/images/I/714Rq4k05UL._AC_UY654_FMwebp_QL65_.jpg"
             rating={5}
           />
           <Product
+            id={12334}
             title="NATIONAL GEOGRAPHIC Earth Science Kit - Over 15 Science Experiments & STEM Activities for Kids, Includes Crystal Growing Kit, Volcano Science Kit"
             price={39.99}
             image="https://images-na.ssl-images-amazon.com/images/I/91AQBSotB2L._AC_SX679_.jpg"
@@ -29,18 +31,21 @@ function Home() {
 
         <div className="home_row">
           <Product
+            id={9837}
             title="The lean startup"
             price={29.99}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
             rating={5}
           />
           <Product
+            id={9966}
             title="Microservices security"
             price={39.99}
             image="https://m.media-amazon.com/images/I/410tcmxFr7L._AC_SL520_.jpg"
             rating={1}
           />
           <Product
+            id={63745}
             title="Learning Java"
             price={49.99}
             image="https://m.media-amazon.com/images/I/91gRSdr8B2L._AC_SY400_.jpg"
@@ -50,6 +55,7 @@ function Home() {
 
         <div className="home_row">
           <Product
+            id={343490}
             title="Hacking - The art of exploitation"
             price={29.99}
             image="https://m.media-amazon.com/images/I/91UlU666haL._AC_SY400_.jpg"
