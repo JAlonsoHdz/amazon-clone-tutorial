@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
+import { auth } from "../firebase";
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
+
+  const history = useHistory();
+
+  const signOut = () => {
+    console.log(user + " flag value");
+    if (user) {
+      auth
+        .signOut()
+        .then(function() {
+          //when attempting to sign out stay in home page
+          history.push("/");
+        })
+        .catch(function(error) {});
+    } else {
+      //when attempting to sign in go to login page
+      history.push("/login");
+    }
+  };
 
   return (
     <div className="header">
@@ -21,10 +40,14 @@ function Header() {
 
       <div className="header__nav">
         <Link to="/login">
-          <div className="header__option">
-            <span className="header__optionFirstLine">Hello Guest</span>
+          <div className="header__option" onClick={signOut}>
+            <span className="header__optionFirstLine">
+              Hello {user ? user.email : "Gueat"}
+            </span>
 
-            <span className="header__optionSecondLine">Sign in</span>
+            <span className="header__optionSecondLine">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
           </div>
         </Link>
 
