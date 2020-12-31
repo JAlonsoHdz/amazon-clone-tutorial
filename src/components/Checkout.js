@@ -31,12 +31,12 @@ function Checkout() {
         <div className="checkout__title">
           <h3>Hello, {user?.email}</h3>
           <h2>Your shopping basket</h2>
-          {console.log(transition.item + " transition items")}
           {transition.map(({ item, key, props }) => {
-            console.log(item + " transition items");
+            const keyNew = getRandomKey();
+            console.log(keyNew + "this is the new key");
             return (
               <animated.div
-                key={getRandomKey()}
+                key={keyNew}
                 style={props}
                 className="checkout__product"
               >
