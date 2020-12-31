@@ -1,8 +1,21 @@
 import React from "react";
 import "./Home.css";
 import Product from "./Product";
+import { useSpring, animated } from "react-spring";
+
+const calc = (x, y) => [
+  -(y - window.innerHeight / 2) / 20,
+  (x - window.innerWidth / 2) / 20,
+  1.1
+];
+const trans = (x, y, s) =>
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 function Home() {
+  const [props, set] = useSpring(() => ({
+    xys: [0, 0, 1],
+    config: { mass: 5, tension: 350, friction: 40 }
+  }));
   return (
     <div className="home">
       <div className="home__container">
@@ -12,8 +25,24 @@ function Home() {
           alt="banner"
         />
         <div className="home_row">
+          <animated.div
+            className="product"
+            onMouseMove={({ clientX: x, clientY: y }) =>
+              set({ xys: calc(x, y) })
+            }
+            onMouseLeave={() => set({ xys: [0, 0, 1] })}
+            style={{ transform: props.xys.interpolate(trans) }}
+          >
+            <Product
+              id={12342}
+              title="All-new Echo Dot (4th Gen, 2020 release) | Smart speaker with Alexa | Charcoal"
+              price={29.99}
+              image="https://m.media-amazon.com/images/I/714Rq4k05UL._AC_UY654_FMwebp_QL65_.jpg"
+              rating={5}
+            />
+          </animated.div>
+
           <Product
-            key={12342}
             id={12342}
             title="All-new Echo Dot (4th Gen, 2020 release) | Smart speaker with Alexa | Charcoal"
             price={29.99}
@@ -21,7 +50,6 @@ function Home() {
             rating={5}
           />
           <Product
-            key={1234}
             id={12334}
             title="NATIONAL GEOGRAPHIC Earth Science Kit - Over 15 Science Experiments & STEM Activities for Kids, Includes Crystal Growing Kit, Volcano Science Kit"
             price={39.99}
@@ -29,11 +57,9 @@ function Home() {
             rating={5}
           />
         </div>
-        {/* Product*/}
 
         <div className="home_row">
           <Product
-            key={9837}
             id={9837}
             title="The lean startup"
             price={29.99}
@@ -41,7 +67,6 @@ function Home() {
             rating={5}
           />
           <Product
-            key={9966}
             id={9966}
             title="Microservices security"
             price={39.99}
@@ -49,7 +74,6 @@ function Home() {
             rating={1}
           />
           <Product
-            key={63745}
             id={63745}
             title="Learning Java"
             price={49.99}
@@ -60,7 +84,6 @@ function Home() {
 
         <div className="home_row">
           <Product
-            key={343490}
             id={343490}
             title="Hacking - The art of exploitation"
             price={29.99}

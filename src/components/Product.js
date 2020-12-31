@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import { useStateValue } from "../StateProvider";
 
 const Product = ({ id, title, image, price, rating }) => {
   const [, dispatch] = useStateValue();
+  const [checkoutId, setcheckoutId] = useState(0);
 
   const addToBasket = () => {
     dispatch({
@@ -30,7 +31,7 @@ const Product = ({ id, title, image, price, rating }) => {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>⭐</p>
+              <p key={i++}>⭐</p>
             ))}
         </div>
       </div>

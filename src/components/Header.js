@@ -12,7 +12,6 @@ function Header() {
   const history = useHistory();
 
   const signOut = () => {
-    console.log(user + " flag value");
     if (user) {
       auth
         .signOut()
