@@ -4,7 +4,6 @@ import SubTotal from "./SubTotal";
 import { useStateValue } from "../StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
 import shortid from "shortid";
-
 import { useTransition, animated } from "react-spring";
 
 function Checkout() {
@@ -15,7 +14,7 @@ function Checkout() {
   };
 
   // define transition behaviour
-  const transition = useTransition(basket, basket => basket.id, {
+  const transition = useTransition(basket, {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
     enter: { opacity: 1, marginLeft: 0, marginRight: 0 }
   });
@@ -31,16 +30,12 @@ function Checkout() {
         <div className="checkout__title">
           <h3>Hello, {user?.email}</h3>
           <h2>Your shopping basket</h2>
-          {transition.map(({ item, key, props }) => {
+          {transition((props, item) => {
             const keyNew = getRandomKey();
-            console.log(keyNew + "this is the new key");
             return (
-              <animated.div
-                key={keyNew}
-                style={props}
-                className="checkout__product"
-              >
+              <animated.div style={props}>
                 <CheckoutProduct
+                  key={keyNew}
                   id={item.id}
                   image={item.image}
                   price={item.price}

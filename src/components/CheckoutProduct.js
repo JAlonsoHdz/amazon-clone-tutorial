@@ -13,7 +13,7 @@ const CheckoutProduct = props => {
   };
 
   return (
-    <>
+    <div className="checkout__product">
       <img className="checkout__image" src={props.image} alt="" />
       <div className="checkout__productInfo">
         <p className="checkout__title">{props.title}</p>
@@ -32,7 +32,7 @@ const CheckoutProduct = props => {
           Remove from basket
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
