@@ -31,22 +31,23 @@ const Payment = () => {
           <div className="payment_title">
             <h3>Review items for delivery</h3>
           </div>
+          <div className="payment_items">
+            {basket.map(item => {
+              const keyNew = getRandomKey();
+              return (
+                <CheckoutProduct
+                  key={keyNew}
+                  id={item.id}
+                  image={item.image}
+                  price={item.price}
+                  rating={item.rating}
+                  title={item.title}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className="payment_items">
-          {basket.map(item => {
-            const keyNew = getRandomKey();
-            return (
-              <CheckoutProduct
-                key={keyNew}
-                id={item.id}
-                image={item.image}
-                price={item.price}
-                rating={item.rating}
-                title={item.title}
-              />
-            );
-          })}
-        </div>
+
         <div className="payment_section">
           <div className="payment_title">
             <h3>Payment Method</h3>
