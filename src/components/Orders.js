@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useStateValue } from "../StateProvider";
 import "./Orders.css";
 import Order from "./Order";
+import shortid from "shortid";
 
 import { db } from "../firebase";
 
@@ -16,7 +17,6 @@ function Orders() {
 
   useEffect(() => {
     if (user) {
-      console.log("usuario " + user?.uid);
       db.collection("users")
         .doc(user?.uid)
         .collection("orders")
@@ -38,7 +38,6 @@ function Orders() {
     <div className="orders">
       <h1>Your Orders</h1>
       <div className="orders__order">
-        {console.log("orders found >>>" + orders)}
         {orders?.map(order => (
           <Order order={order} />
         ))}

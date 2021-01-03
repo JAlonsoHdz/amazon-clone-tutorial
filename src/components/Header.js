@@ -33,7 +33,7 @@ function Header() {
       </Link>
 
       <div className="header__search">
-        <input className="header_searchInput" type="text" />
+        <input className="header_searchInput" type="text" placeholder="esta madre no sirve aun, no hay search!"/>
         <SearchIcon className="header__searchIcon" />
       </div>
 
@@ -41,7 +41,7 @@ function Header() {
         <Link to="/login">
           <div className="header__option" onClick={signOut}>
             <span className="header__optionFirstLine">
-              Hello {user ? user.email : "Gueat"}
+              Hello {user ? user.email : "Guest"}
             </span>
 
             <span className="header__optionSecondLine">

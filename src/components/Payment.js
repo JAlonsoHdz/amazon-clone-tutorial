@@ -38,8 +38,6 @@ const Payment = () => {
     getClientSecret();
   }, [basket]);
 
-  console.log("secret is: ", clientSecret);
-
   const stripe = useStripe();
   const elements = useElements();
 

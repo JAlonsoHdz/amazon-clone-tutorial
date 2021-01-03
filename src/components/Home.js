@@ -35,10 +35,10 @@ function Home() {
           >
             <Product
               key={1}
-              id={12342}
-              title="All-new Echo Dot (4th Gen, 2020 release) | Smart speaker with Alexa | Charcoal"
-              price={29.99}
-              image="https://m.media-amazon.com/images/I/714Rq4k05UL._AC_UY654_FMwebp_QL65_.jpg"
+              id={123426}
+              title="PS5 para revender loco!!"
+              price={499.99}
+              image="https://m.media-amazon.com/images/I/61U4UgkHd7L._AC_UY654_FMwebp_QL65_.jpg"
               rating={5}
             />
           </animated.div>

@@ -10,6 +10,9 @@ npm run build
 
 firebase deploy
 
+#to deploy only front end do
+firebase deploy --only hosting
+
 #workaround for react spring prod issue https://github.com/pmndrs/react-spring/issues/1078
 #permanent fix will be deployed on "react-spring": "^9.0.0-rc.4" upgrade when avaiable!
 npm run postinstall
