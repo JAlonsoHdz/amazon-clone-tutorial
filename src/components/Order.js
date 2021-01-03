@@ -3,6 +3,7 @@ import "./Order.css";
 import moment from "moment";
 import CheckoutProduct from "./CheckoutProduct";
 import shortid from "shortid";
+import CurrencyFormat from "react-currency-format";
 
 function Order({ order }) {
   const getRandomKey = () => {
@@ -24,8 +25,27 @@ function Order({ order }) {
           price={item.price}
           rating={item.rating}
           title={item.title}
+          hiddenButton
         />
-      ))}
+      ))
+      }
+       <CurrencyFormat
+        renderText={value => (
+          <>
+            <h3 className="order_total">
+              Order Total: {value}
+            </h3>
+            <small className="subtotal__gift">
+              <input type="checkbox" /> This order This order containts a gift
+            </small>
+          </>
+        )}
+        decimalScale={2}
+        value={order.data.amount}
+        displayType={"text"}
+        thousandSeparator={true}
+        prefix={"$"}
+      />   
     </div>
   );
 }

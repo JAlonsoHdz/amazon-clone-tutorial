@@ -9,6 +9,11 @@ function Orders() {
   const [{ user }] = useStateValue();
   const [orders, setOrders] = useState([]);
 
+  const getRandomKey = () => {
+    return shortid.generate();
+  };
+
+
   useEffect(() => {
     if (user) {
       console.log("usuario " + user?.uid);

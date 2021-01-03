@@ -21,3 +21,6 @@ select "Functions: Configure and deploy Cloud Functions"
 select language for this app we are using TypeScript
 use ESlint type y to use it
 and select yes when prompt to install dependencies
+
+#deploy only functions(backend) -- you need to have blaze account membership 
+firebase deploy --only functions

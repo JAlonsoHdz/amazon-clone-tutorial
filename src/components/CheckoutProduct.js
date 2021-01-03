@@ -2,35 +2,35 @@ import React from "react";
 import "./CheckoutProduct.css";
 import { useStateValue } from "../StateProvider";
 
-const CheckoutProduct = props => {
+const CheckoutProduct = ({id, image, title, price, rating, hiddenButton}) => {
   const [, dispatch] = useStateValue();
 
   const removeFromBaskket = () => {
     dispatch({
       type: "REMOVE_FROM_BASKET",
-      id: props.id
+      id: id
     });
   };
 
   return (
     <div className="checkout__product">
-      <img className="checkout__image" src={props.image} alt="" />
+      <img className="checkout__image" src={image} alt="" />
       <div className="checkout__productInfo">
-        <p className="checkout__title">{props.title}</p>
+        <p className="checkout__title">{title}</p>
         <p className="checkout__price">
           <small>$</small>
-          <strong>{props.price}</strong>
+          <strong>{price}</strong>
         </p>
         <p className="checkout__rating">
-          {Array(props.rating)
+          {Array(rating)
             .fill()
             .map((_, i) => (
               <span key={i++}>⭐</span>
             ))}
         </p>
-        <button onClick={removeFromBaskket} className="checkout__removeButton">
+        {!hiddenButton && (<button onClick={removeFromBaskket} className="checkout__removeButton">
           Remove from basket
-        </button>
+        </button>)}
       </div>
     </div>
   );
